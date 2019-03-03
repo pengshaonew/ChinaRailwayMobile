@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中铁六局集团有限公司建筑安装分公司</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+<ul id="main"></ul>
+<script>
+    var id = location.href.match(/\?(\d+)$/) && location.href.match(/\?(\d+)$/)[1];
+    let createDate = new Date().toLocaleDateString().replace(/\//g, "-");
+    if (id) {
+        $.ajax({
+            method: "POST",
+            url: '/chinaRailway/commodity/mobile/commodityList',
+            dataType: 'JSON',
+            data: JSON.stringify({
+                classId: id,
+                createDate: createDate,
+            }),
+            success: function (data) {
+                var html = '';
+                data.forEach(item => {
+                    html += '<li><a href="spareParts.html?' + item.id + '">' + item.name + '</a></li>'
+                });
+                $('#main').html(html);
+            }
+        })
+    }
+</script>
+</body>
+</html>
