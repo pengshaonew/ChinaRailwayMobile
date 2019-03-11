@@ -1,0 +1,19 @@
+@import "base.css";
+#main{
+    padding:10px;
+}
+dl{
+    display: flex;
+}
+dt{
+    flex:2;
+    color:#333;
+    padding-right:5px;
+}
+dt::after{
+    content:"："
+}
+dd{
+    flex:3;
+    color:#666;
+}

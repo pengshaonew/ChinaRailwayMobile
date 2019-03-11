@@ -6,32 +6,69 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>中铁六局集团有限公司建筑安装分公司</title>
+    <link rel="stylesheet" href="./css/weui.min.css">
+    <link rel="stylesheet" href="./css/jquery-weui.min.css">
     <link rel="stylesheet" href="./css/index.css">
     <script src="./js/jquery.min.js"></script>
 </head>
 <body>
-<ul id="main"></ul>
+<h4 class="projectName" id="className"></h4>
+<div class="weui-cell">
+    <div class="weui-cell__hd"><label for="" class="weui-label">日期</label></div>
+    <div class="weui-cell__bd">
+        <input id="createDate" class="weui-input" type="date" value="">
+    </div>
+</div>
+<div class="weui-cells" id="main"></div>
 <script>
-    var id = location.href.match(/\?(\d+)$/) && location.href.match(/\?(\d+)$/)[1];
-    let createDate = new Date().toLocaleDateString().replace(/\//g, "-");
-    if (id) {
-        $.ajax({
-            method: "POST",
-            url: '/chinaRailway/commodity/mobile/commodityList',
-            dataType: 'JSON',
-            data: JSON.stringify({
-                classId: id,
-                createDate: createDate,
-            }),
-            success: function (data) {
-                var html = '';
-                data.forEach(item => {
-                    html += '<li><a href="spareParts.html?' + item.id + '">' + item.name + '</a></li>'
-                });
-                $('#main').html(html);
-            }
-        })
+    String.prototype.getUrl=function getUrl(){
+        var reg=/([^=&?]+)=([^=&?]+)/g,obj={};
+        this.replace(reg,function(){
+            var key=arguments[1],value=decodeURI(arguments[2]);
+            obj[key]=value;
+        });
+        return obj;
+    };
+    String.prototype.convert=function getUrl(){
+        return this.replace(/(\d+)[-/](\d+)[-/](\d+)/,function(){
+            return arguments[1]+"-"+(arguments[2]<10?"0"+arguments[2]:arguments[2])+"-"+(arguments[3]<10?"0"+arguments[3]:arguments[3]);
+        });
+    };
+    getData();
+    function getData() {
+        var id = location.href.match(/\?(\d+)$/) && location.href.match(/\?(\d+)$/)[1];
+        var defaultCreateDate=new Date().toLocaleDateString().convert();
+        if (id) {
+            $.ajax({
+                method: "POST",
+                url: '/chinaRailway/commodity/mobile/commodityList',
+                dataType: 'JSON',
+                data: JSON.stringify({
+                    classId: id,
+                    createDate: $("#createDate").val().convert()||defaultCreateDate,
+                }),
+                success: function (data) {
+                    var html = '';
+                    if(data[0]){
+                        $('#className').html(data[0].parentName);
+                    }
+                    data.forEach(item => {
+                        html += '<a class="weui-cell weui-cell_access" href="sparePartsDetail.html?id='+item.id+'&createDate='+($("#createDate").val().convert()||defaultCreateDate)+'">'+
+                            '<div class="weui-cell__bd">'+
+                            '<p>'+item.name+'</p>'+
+                            '</div>'+
+                            '<div class="weui-cell__ft">'+
+                            '</div>'+
+                            '</a>';
+                    });
+                    $('#main').html(html);
+                }
+            })
+        }
     }
+    $('#createDate').on('change',function () {
+        getData();
+    })
 </script>
 </body>
 </html>

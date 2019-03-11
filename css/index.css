@@ -1,1 +1,5 @@
 @import "base.css";
+.projectName{
+    padding: 20px 10px 0 10px;
+    font-size: 18px;
+}
