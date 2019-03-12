@@ -40,32 +40,32 @@
             var html = '<div>' +
                             '<dl><dt>所属分类</dt><dd>' + data.parentName + '</dd></dl>' +
                             '<dl><dt>构件名称</dt><dd>' + data.name + '</dd></dl>' +
-                            '<dl><dt>构件尺寸</dt><dd>' + data.size + '</dd></dl>' +
-                            '<dl><dt>ZZL1</dt><dd>' + data.ZZL1 + '</dd></dl>' +
-                            '<dl><dt>构件重量</dt><dd>' + data.weight + '</dd></dl>' +
-                            '<dl><dt>构件板厚</dt><dd>' + data.thickness + '</dd></dl>' +
-                            '<dl><dt>构件长度</dt><dd>' + data.length + '</dd></dl>' +
-                            '<dl><dt>构件宽度</dt><dd>' + data.width + '</dd></dl>' +
-                            '<dl><dt>构件高度</dt><dd>' + data.height + '</dd></dl>' +
-                            '<dl><dt>下料</dt><dd>' + data.blanking + '</dd></dl>' +
-                            '<dl><dt>钢板信息</dt><dd>' + data.steelPlate + '</dd></dl>' +
-                            '<dl><dt>单元件合格情况</dt><dd>' + data.singleElement + '</dd></dl>' +
-                            '<dl><dt>组装</dt><dd>' + data.assemble + '</dd></dl>' +
-                            '<dl><dt>构件焊缝</dt><dd>' + data.weldLine + '</dd></dl>' +
-                            '<dl><dt>焊接方法</dt><dd>' + data.weldingMethod + '</dd></dl>' +
-                            '<dl><dt>焊工信息</dt><dd>' + data.welderInfo + '</dd></dl>' +
-                            '<dl><dt>焊缝检测方法</dt><dd>' + data.testMethod + '</dd></dl>' +
-                            '<dl><dt>焊缝检测人员信息</dt><dd>' + data.testingPersonnelInfo + '</dd></dl>' +
-                            '<dl><dt>焊缝合格情况</dt><dd>' + data.qualification + '</dd></dl>' +
-                            '<dl><dt>姓名证件号</dt><dd>' + data.idNum + '</dd></dl>' +
-                            '<dl><dt>涂装情况</dt><dd>' + data.paintingSituation + '</dd></dl>' +
-                            '<dl><dt>涂装人员信息</dt><dd>' + data.coatingPersonnel + '</dd></dl>' +
-                            '<dl><dt>漆膜厚度检测</dt><dd>' + data.qmhdjc + '</dd></dl>' +
-                            '<dl><dt>底中面</dt><dd>' + data.dzm + '</dd></dl>' +
-                            '<dl><dt>制孔</dt><dd>' + data.zhikong + '</dd></dl>' +
-                            '<dl><dt>制孔设备</dt><dd>' + data.zksb + '</dd></dl>' +
-                            '<dl><dt>制孔人员信息</dt><dd>' + data.zkryxx + '</dd></dl>' +
-                            '<dl><dt>构件进度图片</dt><dd><img src="' + data.imgUrl + '" alt=""></dd></dl>' +
+                            '<dl><dt>构件尺寸</dt><dd>' + (data.size||"") + '</dd></dl>' +
+                            '<dl><dt>ZZL1</dt><dd>' + (data.ZZL1||"") + '</dd></dl>' +
+                            '<dl><dt>构件重量</dt><dd>' + (data.weight||"") + '</dd></dl>' +
+                            '<dl><dt>构件板厚</dt><dd>' + (data.thickness||"") + '</dd></dl>' +
+                            '<dl><dt>构件长度</dt><dd>' + (data.length||"") + '</dd></dl>' +
+                            '<dl><dt>构件宽度</dt><dd>' + (data.width||"") + '</dd></dl>' +
+                            '<dl><dt>构件高度</dt><dd>' + (data.height||"") + '</dd></dl>' +
+                            '<dl><dt>下料</dt><dd>' + (data.blanking||"") + '</dd></dl>' +
+                            '<dl><dt>钢板信息</dt><dd>' + (data.steelPlate||"") + '</dd></dl>' +
+                            '<dl><dt>单元件合格情况</dt><dd>' + (data.singleElement||"") + '</dd></dl>' +
+                            '<dl><dt>组装</dt><dd>' + (data.assemble||"") + '</dd></dl>' +
+                            '<dl><dt>构件焊缝</dt><dd>' + (data.weldLine||"") + '</dd></dl>' +
+                            '<dl><dt>焊接方法</dt><dd>' + (data.weldingMethod||"") + '</dd></dl>' +
+                            '<dl><dt>焊工信息</dt><dd>' + (data.welderInfo||"") + '</dd></dl>' +
+                            '<dl><dt>焊缝检测方法</dt><dd>' + (data.testMethod||"") + '</dd></dl>' +
+                            '<dl><dt>焊缝检测人员信息</dt><dd>' + (data.testingPersonnelInfo||"") + '</dd></dl>' +
+                            '<dl><dt>焊缝合格情况</dt><dd>' + (data.qualification||"") + '</dd></dl>' +
+                            '<dl><dt>姓名证件号</dt><dd>' + (data.idNum||"") + '</dd></dl>' +
+                            '<dl><dt>涂装情况</dt><dd>' + (data.paintingSituation||"") + '</dd></dl>' +
+                            '<dl><dt>涂装人员信息</dt><dd>' + (data.coatingPersonnel||"") + '</dd></dl>' +
+                            '<dl><dt>漆膜厚度检测</dt><dd>' + (data.qmhdjc||"") + '</dd></dl>' +
+                            '<dl><dt>底中面</dt><dd>' + (data.dzm||"") + '</dd></dl>' +
+                            '<dl><dt>制孔</dt><dd>' + (data.zhikong||"") + '</dd></dl>' +
+                            '<dl><dt>制孔设备</dt><dd>' + (data.zksb||"") + '</dd></dl>' +
+                            '<dl><dt>制孔人员信息</dt><dd>' + (data.zkryxx||"") + '</dd></dl>' +
+                            '<dl><dt>构件进度图片</dt><dd><img src="' + (data.imgUrl||"") + '" alt=""></dd></dl>' +
                         '</div>';
             $('#main').html(html);
         }

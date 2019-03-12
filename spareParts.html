@@ -31,7 +31,7 @@
     };
     String.prototype.convert=function getUrl(){
         return this.replace(/(\d+)[-/](\d+)[-/](\d+)/,function(){
-            return arguments[1]+"-"+(arguments[2]<10?"0"+arguments[2]:arguments[2])+"-"+(arguments[3]<10?"0"+arguments[3]:arguments[3]);
+            return arguments[1]+"-"+(arguments[2]*1<10?"0"+arguments[2]*1:arguments[2])+"-"+(arguments[3]*1<10?"0"+arguments[3]*1:arguments[3]);
         });
     };
     getData();
