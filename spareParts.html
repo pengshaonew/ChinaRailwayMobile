@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="./css/jquery-weui.min.css">
     <link rel="stylesheet" href="./css/index.css">
     <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/spareParts.css">
 </head>
 <body>
 <h4 class="projectName" id="className"></h4>
 <div class="weui-cell">
-    <div class="weui-cell__hd"><label for="" class="weui-label">日期</label></div>
+    <div class="weui-cell__hd"><label for="createDate" class="weui-label">日期</label></div>
     <div class="weui-cell__bd">
         <input id="createDate" class="weui-input" type="date" value="">
     </div>
@@ -34,10 +35,11 @@
             return arguments[1]+"-"+(arguments[2]*1<10?"0"+arguments[2]*1:arguments[2])+"-"+(arguments[3]*1<10?"0"+arguments[3]*1:arguments[3]);
         });
     };
+    var defaultCreateDate=new Date().toLocaleDateString().convert();
+    // $("#createDate").val(new Date().toLocaleDateString().convert());
     getData();
     function getData() {
         var id = location.href.match(/\?(\d+)$/) && location.href.match(/\?(\d+)$/)[1];
-        var defaultCreateDate=new Date().toLocaleDateString().convert();
         if (id) {
             $.ajax({
                 method: "POST",
