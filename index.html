@@ -8,14 +8,32 @@
     <script src="./js/jquery.min.js"></script>
     <link rel="stylesheet" href="./css/weui.min.css">
     <link rel="stylesheet" href="./css/jquery-weui.min.css">
+    <script src="./js/jquery.session.js"></script>
 </head>
 <body>
+<div id="count"></div>
+<img src="./images/guide.jpg" alt="" id="guide">
 <div id="box">
     <h4 class="projectName" id="projectName"></h4>
     <div class="weui-cells" id="main"></div>
 </div>
 
 <script>
+    if($.session.get('guide')!=="Y"){
+        $("#guide").css('display',"block");
+        $.session.set('guide', 'Y');
+        var count=3;
+        $('#count').html("跳过（"+count+"秒）");
+        this.timer=setInterval(function () {
+           count-=1;
+            $('#count').html("跳过（"+count+"秒）");
+           if(count<0){
+               $("#count,#guide").css('display',"none");
+               clearInterval(this.timer);
+               return;
+           }
+        },1000)
+    }
     $.ajax({
         method: "POST",
         url: '/chinaRailway/mobile/class/classList',
