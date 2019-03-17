@@ -11,7 +11,7 @@
     <script src="./js/jquery.session.js"></script>
 </head>
 <body>
-<div id="count"></div>
+<div id="count" style="color:#fff;"></div>
 <img src="./images/guide.jpg" alt="" id="guide">
 <div id="box">
     <h4 class="projectName" id="projectName"></h4>
@@ -34,6 +34,10 @@
            }
         },1000)
     }
+    $('#count').click(function () {
+        $("#count,#guide").css('display',"none");
+        clearInterval(this.timer);
+    });
     $.ajax({
         method: "POST",
         url: '/chinaRailway/mobile/class/classList',
